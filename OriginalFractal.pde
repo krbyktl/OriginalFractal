@@ -1,21 +1,32 @@
 public void setup()
 {
   size(600, 600);
-  background(0, 175, 255);
+  background(0, (int)(Math.random()*155)+100, 255);
+  frameRate(1);
 }
 public void draw()
 {
+  rayFractal(0, 0, 300);
   cloudFractal(250, 0, 250);
   cloudFractal(360, 150, 250);
-  myFractal(300, 300, 200);
+  myFractal(225, 225, 200);
+  myFractal(350, 350, 200);
   noStroke();
-  fill(242, 207, 53);
-  ellipse(0, 0, 75, 75);
+}
+public void rayFractal(int c, int d, int wid)
+{
+  noStroke();
+  fill(240, (int)(Math.random()*155)+100, 70);
+  ellipse(0, 0, wid, wid);
+  if(wid > 10)
+  {
+    rayFractal(c, d, 5*wid/6);
+  }
 }
 public void cloudFractal(int a, int b, int len)
 {
   stroke(37, 177, 252);
-  fill(169, 229, 249, 255);
+  fill((int)(Math.random()*255), (int)(Math.random()*255), 255, 100);
   ellipse(a, b, len, len);
   if(len > 10)
   {
@@ -27,6 +38,7 @@ public void cloudFractal(int a, int b, int len)
 public void myFractal(int x, int y, int siz)
 {
   stroke(37, 177, 252);
+  fill(255, (int)(Math.random()*255), (int)(Math.random()*255), 100);
   beginShape();
   vertex(x, y);
   vertex(x+siz, y);
